@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: awesome_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  firebase_emulator:
+    image: firebase/emulator:latest
+    ports:
+      - '8080:8080'
+      - '9099:9099'
+volumes:
+  pgdata:
+networks:
+  default:
+    name: awesome-network
